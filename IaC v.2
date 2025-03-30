@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo "Feito por GUILHERME"
+
+
+echo "Criando novos diretórios..."
+
+mkdir /publico
+mkdir /neo
+mkdir /new
+mkdir /pass
+
+echo " Criando novos grupos de usuários"
+
+
+groupadd GRP_NEO
+groupadd GRP_NEW
+groupadd GRP_PASS
+
+echo "Criando novos usuários..."
+
+useradd carlos -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEO
+useradd maria -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEO
+useradd joao -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEO
+
+useradd debora -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEW
+useradd sebastiana -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEW
+useradd roberto -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_NEW
+
+useradd josefina -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_PASS
+useradd amanda -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_PASS
+useradd rogerio -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_PASS
+
+echo "Criando permissões dos diretórios"
+
+chown root:GRP_NEO /neo
+chown root:GRP_NEW /new
+chown root:GRP_PASS /pass
+
+chmod 770 /neo
+chmod 770 /new
+chmod 770 /pass
+chmod 777 /publico
+
+echo "Fim..."
+
+echo " OBRIGADO"
